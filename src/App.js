@@ -24,27 +24,29 @@ class TodoItem extends React.Component {
       <div className="Todo-Container">
       {
         this.props.todo.completed && 
-        <p className="Paragraph-checked">
-          <p className="Para-container" onClick={(id)=> this.props.MarkComplete(this.props.todo.id)}> 
+        <div className="Paragraph">
+          <p className="Para-container-checked" onClick={(id)=> this.props.MarkComplete(this.props.todo.id)}> 
             <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} onChange={(id) => this.props.MarkComplete(this.props.todo.id)}/>
             {this.props.todo.title}&nbsp;
           </p>
           <div className="Button-container">
             <button className="Button-close" onClick={(id) => this.props.DeleteTodo(this.props.todo.id)}>X</button>
           </div>
-        </p>
+        </div>
       }
       {
         !this.props.todo.completed && 
-        <p className="Paragraph">
+        <div className="Paragraph">
           <p className="Para-container" onClick={(id)=> this.props.MarkComplete(this.props.todo.id)}> 
             <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} onChange={(id) => this.props.MarkComplete(this.props.todo.id)}/>
             {this.props.todo.title}
           </p>
-          <div className="Button-container">
-            <button className="Button-close" onClick={(id) => this.props.DeleteTodo(this.props.todo.id)}>X</button>
-          </div>
-        </p>
+          <React.Fragment>
+            <div className="Button-container">
+              <button className="Button-close" onClick={(id) => this.props.DeleteTodo(this.props.todo.id)}>X</button>
+            </div>
+          </React.Fragment>
+        </div>
       }
       </div> 
     );
@@ -54,15 +56,17 @@ class TodoItem extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
+    var lists = localStorage.getItem('todos');
+    if(lists.length<=2){
+      lists = JSON.stringify([{
+        id: 1,
+        title: 'Hello Welcome',
+        completed: false
+      }]);
+    }
     this.state ={
-      todos: [
-        {
-          id: 1,
-          title: 'Hello Welcome',
-          completed: false
-        }
-      ],
-      todo: ''
+      todos: lists!==null?JSON.parse(lists):[],
+      todo: '',
     };
   }
 
@@ -74,12 +78,18 @@ class App extends React.Component {
         }
         return todo;
       })
+    },
+    ()=>{
+      localStorage.setItem('todos',JSON.stringify(this.state.todos));
     });
   }
 
   DeleteTodo(id){
     this.setState({
       todos: [...this.state.todos.filter(todo => todo.id !== id)],
+    },
+    ()=>{
+      localStorage.setItem('todos',JSON.stringify(this.state.todos));
     });
   }
 
@@ -104,6 +114,9 @@ class App extends React.Component {
     this.setState({
       todos: [...this.state.todos,newTodo],
       todo: ''
+    },
+    ()=>{
+      localStorage.setItem('todos',JSON.stringify(this.state.todos));
     });
   }
 
