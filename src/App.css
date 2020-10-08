@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+.App-Container {
+  /* border: 2px solid red; */
+  min-height: 95vh;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Header {
+  background-color: #121212;
+  /* border: 2px solid green; */
+  margin: 0px;
+  padding: 10px;
+  padding-left: 30px;
+  font-size: xxx-large;
+  color: white;
+  text-decoration: line-through;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.TodoInput {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 0px;
+}
+
+.TextInput {
+  flex: 10;
+  padding: 10px;
+  font-size: larger;
+  border: none;
+  border-bottom: 2px solid #121212;
+  letter-spacing: 1px;
+}
+
+.TextInput:focus {
+  outline: none;
+  background-color: #f4f4f4;
+}
+
+.SubmitInput {
+  flex: 1;
+  padding: 10px;
+  background-color: #121212da;
+  border: none;
+  color: white;
+  font-size: larger;
+  letter-spacing: 2px;
+}
+
+.SubmitInput:hover {
+  cursor: pointer;
+}
+
+.Todos {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 80%; */
+}
+
+.Todo-Container {
+  border-bottom: 2px solid #f4f4f4;
+  margin: 0px; 
+}
+
+.Paragraph{
+  margin: 0px;
+  display: flex;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.Paragraph-checked{
+  margin: 0px;
+  display: flex;
+  text-decoration: line-through;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Para-container{
+  font-size: large;
+  color: white;
+  margin: 0px;
+  padding: 10px;
+  flex: 10;
+}
+
+.Para-container:hover{
+  cursor: pointer;
+}
+
+.Button-container {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.Button-close {
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 9px;
+}
+
+.Button-close:focus {
+  outline: none;
+}
+
+.Button-close:hover {
+  cursor: pointer;
+  background-color: #121212da;
+  color: white;
+  border: 2px solid white;
+}
+
+.Check {
+  margin-right: 10px;
 }
