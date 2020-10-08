@@ -126,7 +126,7 @@ class App extends React.Component {
         <p className="Header">Todo&nbsp;</p>  
         <div>
           <form className="TodoInput" onSubmit={(e)=>this.AddTodo(e)}>
-            <input type="text" placeholder="Add ToDo..." className="TextInput" value={this.state.todo} onChange={(e)=>this.ChangeTodo(e)}/>
+            <input type="text" placeholder="Add Todo..." className="TextInput" value={this.state.todo} onChange={(e)=>this.ChangeTodo(e)}/>
             <input type="Submit" defaultValue="SUBMIT" className="SubmitInput"/>
           </form>
         </div>
