@@ -26,7 +26,7 @@ class TodoItem extends React.Component {
         this.props.todo.completed && 
         <div className="Paragraph">
           <p className="Para-container-checked" onClick={(id)=> this.props.MarkComplete(this.props.todo.id)}> 
-            <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} onChange={(id) => this.props.MarkComplete(this.props.todo.id)}/>
+            <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} value={this.props.todo.id} onChange={(e) => this.props.MarkComplete(e.target.value)}/>
             {this.props.todo.title}&nbsp;
           </p>
           <div className="Button-container">
@@ -38,7 +38,7 @@ class TodoItem extends React.Component {
         !this.props.todo.completed && 
         <div className="Paragraph">
           <p className="Para-container" onClick={(id)=> this.props.MarkComplete(this.props.todo.id)}> 
-            <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} onChange={(id) => this.props.MarkComplete(this.props.todo.id)}/>
+            <input type="checkbox" className="Check" defaultChecked={this.props.todo.completed} value={this.props.todo.id} onChange={(e) => this.props.MarkComplete(e.target.value)}/>
             {this.props.todo.title}
           </p>
           <React.Fragment>
@@ -123,7 +123,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App-Container">
-        <p className="Header">Todo&nbsp;</p>  
+              <p className="Header">Todo&nbsp;</p>  
         <div>
           <form className="TodoInput" onSubmit={(e)=>this.AddTodo(e)}>
             <input type="text" placeholder="Add Todo..." className="TextInput" value={this.state.todo} onChange={(e)=>this.ChangeTodo(e)}/>
